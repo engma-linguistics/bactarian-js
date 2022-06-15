@@ -1,8 +1,18 @@
-import {StyleSheet, View, Text } from 'react-native'
-
+import * as React from 'react';
+import {StyleSheet, View, Text, Pressable } from 'react-native'
+import {useState, useEffect } from 'react';
 import Translation from './Translation' 
 
+
+
 function Token(props) {
+    const [seen, setSeen] = useState(0);
+    const [reset, setReset] = useState(0);
+
+    useEffect(() => {
+        console.log('clicked a token!')
+    });
+
     return (
         <View style={styles.token}>
             <View>
@@ -24,4 +34,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: "column",
     },
+    pressedItem: {
+        opacity: 0.5,
+      },
 });

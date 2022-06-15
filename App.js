@@ -58,7 +58,7 @@ function Books() {
 function Flashcards() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Flashcards Screen</Text>
+      
     </View>
   );
 }
