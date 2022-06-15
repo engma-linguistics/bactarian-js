@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { useState} from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createDrawerNavigator,
@@ -7,8 +8,28 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import react from 'react';
+import Token from "./components/Token"
+
+//const [modalIsVisible, setModalIsVisible] = useState(true);
 
 // from https://reactnavigation.org/docs/drawer-based-navigation
+
+// not hooked up to anything
+// function activateModel() {
+//   setModalIsVisible(true);
+// }
+
+const dictionary = [
+  {originalText:"Hello", translatedText:"Hola", id:1},
+  {originalText:"world", translatedText:"mundo", id:2},
+  {originalText:"the", translatedText:"el", id:3},
+  {originalText:"app", translatedText:"applicacion", id:4}
+];
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
 
 function Home({ navigation }) {
   return (
@@ -22,8 +43,10 @@ function Home({ navigation }) {
 
 function Books() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Books Screen</Text>
+      <View style={styles.page}>
+        <Token originalText={"aaaaaaaaaaaa"} translationText={"bbbbbbbbb"}/>
+        <Token originalText={"bbb"} translationText={"ccccccccccc"}/>
+        <Token originalText={"dddddddddd"} translationText={"ee"}/>
       </View>
     );
   }
@@ -83,3 +106,13 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    justifyContent: 'start',
+    alignItems: 'start',
+    marginTop: 16,
+    flexDirection: "row",
+  }
+});
