@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState} from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   createDrawerNavigator,
@@ -41,14 +41,18 @@ function Home({ navigation }) {
   );
 }
 
+const textToDisplay = dictionary.map((word) => <Token
+originalText={word.originalText}
+translationText={word.translatedText}
+key={word.id}
+/>);
+
 function Books() {
     return (
       <View style={styles.page}>
-        <Token originalText={"aaaaaaaaaaaa"} translationText={"bbbbbbbbb"}/>
-        <Token originalText={"bbb"} translationText={"ccccccccccc"}/>
-        <Token originalText={"dddddddddd"} translationText={"ee"}/>
+      {textToDisplay} {textToDisplay} {textToDisplay} {textToDisplay} {textToDisplay} {textToDisplay} {textToDisplay} {textToDisplay}
       </View>
-    );
+  );
   }
 
 function Flashcards() {
@@ -109,10 +113,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   page: {
-    flex: 1,
-    justifyContent: 'start',
-    alignItems: 'start',
-    marginTop: 16,
+    flex: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    margin: 16,
     flexDirection: "row",
+    flexWrap: 'wrap'
   }
 });
